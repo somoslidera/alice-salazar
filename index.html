@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lidera com Alice Salazar - V2</title>
+    <title>Lidera com Alice Salazar - V3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,7 +11,10 @@
         :root {
             --primary-dark: #0d0c1d;
             --primary-blue: #3c4a9b;
-            --accent-pink: #d81f6d;
+            --accent-green: #25D366;
+            --accent-vivid-blue: #007BFF;
+            --accent-purple: #9b59b6;
+            --accent-red: #e13d49; /* Final Red */
             --light-text: #f0f0f8;
             --dark-text: #333333;
             --font-heading: 'Montserrat', sans-serif;
@@ -28,9 +31,7 @@
         body {
             font-family: var(--font-body);
             color: var(--light-text);
-            background-color: var(--primary-dark);
-            background-image: radial-gradient(circle at top right, rgba(60, 74, 155, 0.2), transparent 40%),
-                              radial-gradient(circle at bottom left, rgba(216, 31, 109, 0.2), transparent 50%);
+            background: linear-gradient(to bottom, var(--primary-dark), #4a148c);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -56,8 +57,9 @@
         }
 
         h1 { font-size: 3.5rem; text-transform: uppercase; }
-        h2 { font-size: 3rem; text-transform: uppercase; color: var(--accent-pink); }
+        h2 { font-size: 3rem; text-transform: uppercase; color: var(--accent-purple); }
         h3 { font-size: 1.8rem; text-transform: uppercase; }
+        h4 { font-size: 1.5rem; color: var(--accent-vivid-blue); margin-bottom: 15px; text-align: left;}
         p { margin-bottom: 15px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(240, 240, 248, 0.8);}
 
         .text-center {
@@ -66,24 +68,49 @@
 
         .cta-button {
             display: inline-block;
-            background-color: var(--accent-pink);
+            background-color: var(--accent-green);
             color: var(--light-text);
             padding: 18px 40px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 700;
             font-family: var(--font-body);
-            font-size: 1rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
             transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.4);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             border: none;
+            animation: pulse-glow 2s infinite ease-in-out;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            background-color: #e7377f;
-            box-shadow: 0 6px 25px rgba(233, 30, 99, 0.6);
+            background-color: #29e770;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+            }
+        }
+        
+        @keyframes pulse-blue-glow {
+            0% {
+                box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(0, 123, 255, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
+            }
         }
 
         /* Header */
@@ -109,38 +136,26 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(13, 12, 29, 0.85), rgba(13, 12, 29, 0.95)), url('as_save-the-date.png') no-repeat center center/cover;
+            background: linear-gradient(rgba(13, 12, 29, 0.7), rgba(13, 12, 29, 0.85)), url('as_save-the-date.png') no-repeat center center;
+            background-size: cover;
             color: var(--light-text);
-            padding: 100px 20px; /* Add padding for h1 */
+            padding: 120px 20px;
             text-align: center;
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
+            padding-bottom: 60px;
             border-bottom: none;
         }
-        .hero h1 {
-            font-size: 3.2rem; /* Reduced font size */
-            font-weight: 900;
-            text-shadow: 0 0 25px rgba(0,0,0,0.7);
-            max-width: 900px; /* Limit width */
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .hero .sub-headline {
-            font-size: 1.3rem;
-            max-width: 600px;
-            margin: 20px auto 40px;
-            font-weight: 400;
-            color: rgba(240, 240, 248, 0.9);
-        }
-
+        
         /* Countdown */
         .countdown-container {
-            margin: 40px 0;
+            margin-bottom: 40px;
         }
         .countdown-container h3 {
-            color: var(--accent-pink);
+            color: var(--light-text);
             font-size: 1.5rem;
             margin-bottom: 20px;
         }
@@ -170,41 +185,6 @@
             color: rgba(240, 240, 248, 0.8);
             margin-bottom: 0;
         }
-        .support-text {
-            margin-top: 20px;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        /* Content Sections */
-        .content-section {
-            background: transparent;
-        }
-        .content-section .container {
-            text-align: center;
-        }
-        
-        .icon-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left;
-        }
-        .icon-list li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-        }
-        .icon-list .icon {
-            color: var(--accent-pink);
-            font-size: 1.5rem;
-            margin-right: 20px;
-            line-height: 1.4;
-        }
 
         /* Palestrante Section */
         .palestrante-grid {
@@ -215,55 +195,139 @@
             text-align: left;
             margin-top: 50px;
         }
+        .palestrante-grid.reverse {
+            grid-template-columns: 2fr 1fr;
+        }
         .palestrante-grid img {
             width: 100%;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border: 2px solid var(--accent-pink);
+            border: 2px solid var(--accent-vivid-blue);
+        }
+        .secondary-palestrante-img {
+            width: 70%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Icon List */
+        .icon-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .icon-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .icon-list .icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--accent-vivid-blue);
         }
 
         /* Preços */
-        .price-section {
-            background: transparent;
+        .price-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+            margin-top: 50px;
         }
         .price-block {
-            border: 2px solid var(--accent-pink);
+            border: 2px solid var(--accent-vivid-blue);
             padding: 40px;
             border-radius: 10px;
-            max-width: 450px;
-            margin: 40px auto;
-            background: linear-gradient(145deg, rgba(216, 31, 109, 0.1), rgba(13, 12, 29, 0.2));
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(145deg, rgba(0, 123, 255, 0.1), rgba(13, 12, 29, 0.2));
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            backdrop-filter: blur(5px);
         }
         .price-block h3 {
             color: var(--light-text);
-            font-size: 2.5rem;
+            font-size: 2rem;
         }
         .price-block .price {
             font-size: 3.5rem;
             font-weight: 700;
-            font-family: var(--font-body);
-            color: var(--accent-pink);
+            color: var(--accent-vivid-blue);
             margin: 10px 0;
+        }
+        .price .cents {
+            font-size: 1.5rem;
+            vertical-align: super;
         }
         .price-block ul {
             list-style: none;
             padding: 0;
             margin: 25px 0;
             text-align: left;
+            flex-grow: 1;
         }
         .price-block ul li {
             margin-bottom: 12px;
             font-size: 1.1rem;
         }
-        .final-cta {
+        .price-block .cta-button {
+            margin-top: auto;
+        }
+
+        /* Urgency Section */
+        .urgency-section {
+            background-color: var(--accent-red);
+            padding: 60px 0;
+        }
+        .urgency-section h2 {
+            font-size: 4.5rem;
+            color: var(--light-text);
+            text-transform: uppercase;
+            margin: 0;
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+            font-weight: 900;
+        }
+
+        /* Sponsors Section */
+        .sponsors-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
             margin-top: 40px;
         }
-        .scarcity-text {
-            margin-top: 15px;
-            font-weight: 600;
-            color: var(--light-text);
+        .sponsor-item {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 220px;
+            height: 120px;
+            transition: transform 0.3s;
+        }
+        .sponsor-item:hover {
+            transform: scale(1.05);
+        }
+        .sponsor-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(50%);
+            transition: filter 0.3s;
+        }
+        .sponsor-item:hover img {
+            filter: grayscale(0%);
+        }
+        .strategic-partner .sponsor-item {
+            width: 436px;
+            height: 218px;
+            background-color: transparent;
+            border-radius: 10px;
+        }
+        .strategic-partner .sponsor-item img {
+            filter: none;
         }
 
         /* FAQ */
@@ -288,7 +352,7 @@
         .faq-question::after {
             content: '+';
             font-size: 2rem;
-            color: var(--accent-pink);
+            color: var(--accent-vivid-blue);
             transition: transform 0.3s;
         }
         .faq-answer {
@@ -333,7 +397,7 @@
             transition: color 0.3s;
         }
         .social-links a:hover {
-            color: var(--accent-pink);
+            color: var(--accent-vivid-blue);
         }
 
         /* WhatsApp Float Button */
@@ -370,24 +434,33 @@
         }
 
         /* Responsive */
+        @media (max-width: 992px) {
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 25px;
             }
             h1 { font-size: 2.5rem; }
-            .hero h1 { font-size: 2.8rem; }
             h2 { font-size: 2.2rem; }
-            
-            .palestrante-grid {
+            .urgency-section h2 { font-size: 2.8rem; }
+            .palestrante-grid, .palestrante-grid.reverse {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            .palestrante-grid img {
-                max-width: 300px;
+            .palestrante-grid img, .palestrante-grid.reverse img {
                 margin: 0 auto 30px auto;
             }
-            .icon-list {
-                text-align: left;
+            h4 { text-align: center; }
+            .sponsors-grid {
+                gap: 20px;
+            }
+            .sponsor-item {
+                width: 180px;
+                height: 100px;
             }
             #countdown {
                 flex-wrap: wrap;
@@ -411,11 +484,8 @@
     <main>
         <section class="hero" id="home">
             <div class="hero-content fade-in-element">
-                <h1>A Estratégia Digital que Transforma Negócios Locais em Impérios Nacionais.</h1>
-                <p class="sub-headline">A empreendedora de Santo Antônio da Patrulha que construiu um negócio multimilionário volta para casa para ensinar o caminho. Uma noite, poucas vagas, um divisor de águas para sua empresa.</p>
-                
                 <div class="countdown-container">
-                    <h3>INGRESSOS DO 1º LOTE ACABAM EM:</h3>
+                    <h3>As vagas com valor de 1º lote acabam em:</h3>
                     <div id="countdown">
                         <div class="countdown-item"><span id="days">00</span><p>Dias</p></div>
                         <div class="countdown-item"><span id="hours">00</span><p>Horas</p></div>
@@ -424,44 +494,42 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="#precos" class="cta-button">Quero Garantir Minha Vaga Agora</a>
-                    <p class="support-text">Vagas limitadas. Garanta já a sua!</p>
+                    <a href="#precos" class="cta-button">GARANTIR MEU INGRESSO</a>
                 </div>
             </div>
         </section>
 
-        <section class="content-section" id="problema">
+        <section class="content-section" id="tema">
             <div class="container fade-in-element">
-                <h2>Seu negócio está crescendo no ritmo que você deseja?</h2>
-                <p>Em um mercado cada vez mais competitivo, donos de negócios, gestores e líderes em Santo Antônio da Patrulha enfrentam os mesmos desafios: como atrair mais clientes, se destacar da concorrência e usar a internet para vender mais, sem precisar de orçamentos gigantescos?</p>
-                <p>Muitas vezes, a rotina sobrecarrega, as equipes parecem desengajadas e a sensação é de que você está resolvendo tudo sozinho. Você sabe que o potencial existe, mas sente que falta um método, uma estratégia clara para destravar o próximo nível de crescimento.</p>
+                <h2>Como ter Sucesso com Negócios na Internet</h2>
+                <p>Aprenda o método que levou uma empreendedora do interior a construir um império digital, com estratégias que você pode aplicar imediatamente no seu negócio para atrair clientes e vender mais.</p>
             </div>
         </section>
 
-        <section class="content-section" id="solucao">
+        <section class="content-section" id="palestrantes">
             <div class="container fade-in-element">
-                <h2>Existe um método. E ele será revelado no dia 22 de Outubro.</h2>
-                <p>O Lidera, que já trouxe para a cidade nomes como Eduardo Tevah, apresenta em sua 2ª edição uma oportunidade única. Não se trata de mais uma palestra teórica. Trata-se de um encontro prático e direto ao ponto com quem vive o que ensina. Alice Salazar, a CEO e Estrategista Digital, vai abrir o jogo e mostrar as táticas de negócio e marketing digital que ela mesma usou para transformar um salário de R$ 600 em um ecossistema com 7 unidades de negócio e mais de 40 lojas franqueadas por todo o Brasil.</p>
-                <div class="text-center">
-                    <a href="#precos" class="cta-button">Quero Aprender Esse Método</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section" id="palestrante">
-            <div class="container fade-in-element">
-                <h2>Conheça a Estrategista por Trás da Marca de Sucesso</h2>
+                <h2>Conheça Nossas Palestrantes</h2>
+                
                 <div class="palestrante-grid">
                     <img src="lidera_quem-e-alice-salazar.jpg" alt="Foto profissional de Alice Salazar">
                     <div>
+                        <h3>Alice Salazar</h3>
                         <ul class="icon-list">
                             <li><span class="icon">📍</span><div><strong>Raízes Locais:</strong> Nascida e criada em Santo Antônio da Patrulha, entende a realidade e o potencial do empreendedor da nossa região.</div></li>
                             <li><span class="icon">🚀</span><div><strong>Pioneira Digital:</strong> Uma das primeiras a desbravar o empreendedorismo na internet no Brasil, começando em 2010.</div></li>
                             <li><span class="icon">📈</span><div><strong>Resultados Comprovados:</strong> Fundadora de uma marca com mais de 40 franquias e 7 unidades de negócio.</div></li>
                             <li><span class="icon">🏆</span><div><strong>Validação de Mercado:</strong> Participante do reality de negócios "O Aprendiz", com suas habilidades testadas em nível nacional.</div></li>
-                            <li><span class="icon">🎓</span><div><strong>Credibilidade Acadêmica:</strong> Professora de Pós-Graduação na PUC, compartilhando seu conhecimento prático.</div></li>
                         </ul>
                     </div>
+                </div>
+
+                <div class="palestrante-grid reverse" style="margin-top: 80px;">
+                    <div>
+                        <h3>Denise Milk</h3>
+                        <h4>Você é o Projeto Mais Lucrativo do Mundo</h4>
+                        <p style="text-align: left;">Denise Milk é psicóloga e palestrante, com mais de 15 anos de experiência desenvolvendo líderes, pessoas e empresas com um olhar profundo, humano e estratégico. Sua abordagem parte de uma convicção simples, mas poderosa: a primeira liderança bem-sucedida é a da própria vida.</p>
+                    </div>
+                    <img src="imagem/foto-denise-milk.jpeg" alt="Foto profissional de Denise Milk" class="secondary-palestrante-img">
                 </div>
             </div>
         </section>
@@ -469,27 +537,20 @@
         <section class="content-section" id="aprendizado">
             <div class="container fade-in-element">
                 <h2>O que Você Vai Aprender</h2>
-                <p>Nesta palestra de 1 hora, você terá acesso a um conteúdo prático para aplicar no dia seguinte:</p>
+                <p>Nesta noite de imersão, você terá acesso a um conteúdo prático para aplicar no dia seguinte:</p>
                 <ul class="icon-list">
                     <li><span class="icon">✅</span><div><strong>Estratégias Digitais Vencedoras:</strong> Como usar as redes sociais para construir uma marca forte e atrair clientes, mesmo com baixo orçamento.</div></li>
                     <li><span class="icon">✅</span><div><strong>Dicas Práticas de Redes Sociais:</strong> O que postar, como se comunicar e como transformar seguidores em clientes fiéis.</div></li>
-                    <li><span class="icon">✅</span><div><strong>A Jornada da Superação:</strong> A história real de como ela superou os desafios iniciais para construir um negócio sólido.</div></li>
-                    <li><span class="icon">✅</span><div><strong>Motivação para Agir:</strong> Uma injeção de ânimo e a prova de que é possível ter sucesso começando pequeno, no interior do RS.</div></li>
-                    <li><span class="icon">✅</span><div><strong>Sessão de Perguntas e Respostas:</strong> Sua chance de tirar dúvidas diretamente com a Alice ao final da palestra.</div></li>
+                    <li><span class="icon">✅</span><div><strong>A Jornada da Superação:</strong> A história real de como superar os desafios iniciais para construir um negócio sólido.</div></li>
+                    <li><span class="icon">✅</span><div><strong>Liderança Pessoal:</strong> Como assumir o controle da sua vida e carreira para alcançar resultados extraordinários.</div></li>
+                    <li><span class="icon">✅</span><div><strong>Sessão de Perguntas e Respostas:</strong> Sua chance de tirar dúvidas diretamente com as palestrantes.</div></li>
                 </ul>
             </div>
         </section>
 
-        <section class="content-section" id="publico">
+        <section class="urgency-section">
             <div class="container fade-in-element">
-                <h2>Este encontro foi desenhado para:</h2>
-                <ul class="icon-list">
-                    <li><span class="icon">🎯</span>Donos de Pequenos e Médios Negócios que buscam crescimento.</li>
-                    <li><span class="icon">🎯</span>Gestores e Líderes que precisam engajar suas equipes.</li>
-                    <li><span class="icon">🎯</span>Empreendedores e MEIs que querem usar o poder da internet.</li>
-                    <li><span class="icon">🎯</span>Profissionais Liberais que desejam construir uma marca pessoal forte.</li>
-                    <li><span class="icon">🎯</span>Qualquer pessoa que sonha em transformar uma paixão em um negócio.</li>
-                </ul>
+                <h2 class="text-center">ANTECIPE-SE</h2>
             </div>
         </section>
 
@@ -499,20 +560,57 @@
                 <p><strong>Data:</strong> 22 de Outubro de 2025 | <strong>Horário:</strong> 19h</p>
                 <p><strong>Local:</strong> Espaço Nobre - Colégio Santa Terezinha, Santo Antônio da Patrulha/RS</p>
                 
-                <div class="price-block">
-                    <h3>INGRESSO LOTE 1</h3>
-                    <div class="price">R$ 97,00</div>
-                    <p>ou 12x de R$ 9,70</p>
-                    <ul>
-                        <li>✓ Acesso à palestra</li>
-                        <li>✓ Bate-papo com a palestrante</li>
-                        <li>✓ Sessão de fotos</li>
-                    </ul>
+                <div class="price-grid">
+                    <div class="price-block">
+                        <h3>Ingresso Padrão</h3>
+                        <div class="price">R$ 89<span class="cents">,00</span></div>
+                        <p>ou 12x de R$ 9,70</p>
+                        <ul>
+                            <li>✓ Acesso à palestra</li>
+                            <li>✓ Sessão de Perguntas e Respostas</li>
+                            <li>✓ Certificado Digital</li>
+                        </ul>
+                        <a href="https://pay.kiwify.com.br/2CAvh4y" class="cta-button" style="background-color: var(--accent-purple); animation: pulse-blue-glow 2s infinite ease-in-out;">Comprar Ingresso</a>
+                    </div>
+
+                    <div class="price-block">
+                        <h3>Ingresso VIP</h3>
+                        <div class="price">R$ 149<span class="cents">,00</span></div>
+                        <p>ou 12x de R$ 19,70</p>
+                        <ul>
+                            <li>✓ Todos os benefícios do Ingresso Padrão</li>
+                            <li><strong>+ Assento Preferencial</strong></li>
+                            <li><strong>+ Networking Exclusivo Pós-Evento</strong></li>
+                            <li><strong>+ Foto Profissional com as Palestrantes</strong></li>
+                            <li><strong>+ Kit de Brindes Digitais</strong></li>
+                        </ul>
+                        <a href="https://pay.kiwify.com.br/AzNitmD" class="cta-button">Eu Quero o Acesso VIP</a>
+                    </div>
                 </div>
 
                 <div class="final-cta text-center">
-                    <a href="#" class="cta-button">Sim, Eu Quero Garantir Meu Ingresso!</a>
                     <p class="scarcity-text">Atenção: Vagas limitadas. Não deixe para depois.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sponsors-section" id="patrocinadores">
+            <div class="container fade-in-element">
+                <h2>Nossos Parceiros</h2>
+                <div class="strategic-partner text-center" style="margin-bottom: 50px;">
+                    <h3>Parceria Estratégica</h3>
+                    <div class="sponsors-grid">
+                        <div class="sponsor-item">
+                            <img src="imagem/Uniliv.png" alt="Logo UniLiv">
+                        </div>
+                    </div>
+                </div>
+                <h3>Patrocínio</h3>
+                <div class="sponsors-grid">
+                    <div class="sponsor-item"><img src="imagem/logo-connect.jpeg" alt="Logo Connect"></div>
+                    <div class="sponsor-item"><img src="imagem/logo-cst.PNG" alt="Logo CST"></div>
+                    <div class="sponsor-item"><img src="imagem/logo-savale.png" alt="Logo Savale"></div>
+                    <div class="sponsor-item"><img src="imagem/logo-sicredi.png" alt="Logo Sicredi"></div>
                 </div>
             </div>
         </section>
@@ -559,7 +657,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5551999999999?text=Olá!%20Tenho%20interesse%20no%20evento%20Lidera%20com%20Alice%20Salazar." class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
+    <a href="https://wa.me/555194855542?text=Olá!%20Tenho%20interesse%20no%20evento%20Lidera%20com%20Alice%20Salazar." class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="white" width="24" height="24"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
     </a>
 
@@ -569,7 +667,10 @@
             const countdownElement = document.getElementById('countdown');
             if (!countdownElement) return;
 
-            const countDownDate = new Date("Sep 22, 2025 23:59:59").getTime();
+            // Set a dynamic countdown of approximately 47 hours
+            const now = new Date().getTime();
+            const randomHours = 46 + Math.random() * 2; // Random float between 46 and 48
+            const countDownDate = new Date(now + randomHours * 60 * 60 * 1000).getTime();
 
             const interval = setInterval(function() {
                 const now = new Date().getTime();
@@ -587,7 +688,7 @@
 
                 if (distance < 0) {
                     clearInterval(interval);
-                    countdownElement.innerHTML = "<h3>OFERTA DO 1º LOTE ENCERRADA!</h3>";
+                    countdownElement.innerHTML = "<h3>OFERTA ENCERRADA!</h3>";
                 }
             }, 1000);
         })();
