@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #0d0c1d;    
+            --primary-dark: #0d0c1d;      
             --primary-blue: #3c4a9b;
             --accent-green: #25D366;
             --accent-vivid-blue: #007BFF;
@@ -120,16 +120,10 @@
             }
         }
 
-        @keyframes pulse-gold-glow {
-            0% {
-                box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
-            }
-            100% {
-                box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-            }
+        @keyframes pulse-red-glow {
+            0% { box-shadow: 0 0 15px rgba(225, 61, 73, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(225, 61, 73, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(225, 61, 73, 0.4); }
         }
 
         /* Header */
@@ -153,7 +147,7 @@
             height: 100px;
         }
 
-        /* Hero Section - ALTERAÇÃO PRINCIPAL */
+        /* Hero Section */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -172,13 +166,14 @@
         .hero-content {
             flex: 1;
             text-align: left;
-            animation: fadeInRight 1s ease-out; /* Animação adicionada */
+            animation: fadeInRight 1s ease-out;
         }
 
         .hero-content h1 {
             font-size: 3.2rem;
             text-align: left;
             line-height: 1.2;
+            text-shadow: 0 0 20px rgba(160, 32, 240, 0.6);
         }
 
         .hero-content .hero-intro {
@@ -189,7 +184,7 @@
         }
 
         .hero-details {
-            margin: 25px 0;
+            margin: 25px 0 30px 0;
         }
         
         .hero-details .name, .hero-details .date {
@@ -205,16 +200,20 @@
         }
 
         .hero-image-wrapper {
-            flex: 0 0 45%; /* Define a largura da imagem */
-            animation: fadeInLeft 1s ease-out; /* Animação adicionada */
+            flex: 0 0 45%;
+            animation: fadeInLeft 1s ease-out;
         }
         
         .hero-image-wrapper img {
             width: 100%;
             height: auto;
-            max-width: 500px; /* Limita o tamanho máximo */
+            max-width: 500px;
             display: block;
             margin: 0 auto;
+        }
+
+        .hero-card-mobile {
+            display: none; /* Escondido por padrão */
         }
         
         @keyframes fadeInRight {
@@ -225,7 +224,6 @@
             from { opacity: 0; transform: translateX(30px); }
             to { opacity: 1; transform: translateX(0); }
         }
-        /* Fim da Alteração Principal */
         
         /* Palestrante Section */
         .palestrante-grid {
@@ -434,6 +432,33 @@
             transform: rotate(45deg);
         }
 
+        /* Final CTA Section */
+        .final-cta-section {
+            background: linear-gradient(to top, var(--primary-dark) 0%, #2c0b58 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: none;
+            padding: 100px 0;
+        }
+        .final-cta-section h2 {
+            font-size: 2.8rem;
+            color: var(--light-text);
+            text-shadow: 0 0 15px var(--accent-purple);
+        }
+        .final-cta-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+        }
+        .final-cta-section .cta-button {
+            margin-top: 30px;
+            background-color: var(--accent-red);
+            animation: pulse-red-glow 2s infinite ease-in-out;
+            box-shadow: 0 4px 20px rgba(225, 61, 73, 0.4);
+        }
+        .final-cta-section .cta-button:hover {
+            background-color: #ff4757;
+            box-shadow: 0 6px 25px rgba(225, 61, 73, 0.6);
+        }
+
         /* Footer */
         .footer {
             background-color: var(--primary-dark);
@@ -500,21 +525,32 @@
             .price-grid {
                 grid-template-columns: 1fr;
             }
-             /* ALTERAÇÃO MOBILE */
+             /* HERO MOBILE */
             .hero-layout {
-                flex-direction: column-reverse; /* Inverte a ordem: imagem em cima, texto embaixo */
+                flex-direction: column;
                 text-align: center;
             }
             .hero-content {
                 text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
-            .hero-content h1, .hero-content .hero-intro, .hero-details .name, .hero-details .date {
-                text-align: center; /* Centraliza todo o texto */
+            .hero-text-desktop {
+                display: none;
             }
-            .hero-image-wrapper {
-                margin-bottom: 40px;
-                flex-basis: auto; /* Reseta a base flexível */
-                width: 80%; /* Ajusta a largura da imagem */
+            .hero-image-desktop {
+                display: none;
+            }
+            .hero-card-mobile {
+                display: block;
+                margin-bottom: 30px;
+                width: 100%;
+                max-width: 500px;
+            }
+            .hero-card-mobile img {
+                width: 100%;
+                border-radius: 10px;
             }
         }
 
@@ -525,17 +561,17 @@
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2.2rem; }
             
-            /* ALTERAÇÃO MOBILE HERO */
             .hero {
-                min-height: auto; /* Altura automática */
+                min-height: auto;
                 padding: 60px 0;
             }
             .hero-content h1 {
                 font-size: 2.8rem;
             }
-            /* FIM ALTERAÇÃO MOBILE */
-
-            .urgency-section h2 { font-size: 2.8rem; }
+            
+            .urgency-section h2, .final-cta-section h2 { 
+                font-size: 2.8rem; 
+            }
             .palestrante-grid, .palestrante-grid.reverse {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -582,15 +618,24 @@
         <section class="hero" id="home">
             <div class="container hero-layout">
                 <div class="hero-content">
-                    <p class="hero-intro">Garanta seu lugar na transformação do seu negócio.</p>
-                    <h1>Como ter Sucesso com Negócios na Internet</h1>
-                    <div class="hero-details">
-                        <span class="name">ALICE SALAZAR</span>
-                        <span class="date">22/10/2025 | 19h30</span>
+                    <!-- Conteúdo para Desktop -->
+                    <div class="hero-text-desktop">
+                        <p class="hero-intro">Garanta seu lugar na transformação do seu negócio.</p>
+                        <h1>Como ter Sucesso com Negócios na Internet</h1>
+                        <div class="hero-details">
+                            <span class="name">ALICE SALAZAR</span>
+                            <span class="date">22/10/2025 | 19h30</span>
+                        </div>
                     </div>
+
+                    <!-- Card para Mobile -->
+                    <div class="hero-card-mobile">
+                        <img src="herosection-alice.png" alt="Card Oficial do Evento Lidera com Alice Salazar">
+                    </div>
+                    
                     <a href="#precos" class="cta-button">GARANTIR MEU INGRESSO</a>
                 </div>
-                <div class="hero-image-wrapper">
+                <div class="hero-image-wrapper hero-image-desktop">
                     <img src="./as_save-the-date.png" alt="Foto de Alice Salazar para o evento Lidera">
                 </div>
             </div>
@@ -663,7 +708,7 @@
                     <div class="sponsor-item"><img src="./logo-cst.PNG" alt="Logo CST"></div>
                     <div class="sponsor-item"><img src="./logo-savale.png" alt="Logo Savale"></div>
                     <div class="sponsor-item"><img src="./logo-sicredi.png" alt="Logo Sicredi"></div>
-<div class="sponsor-item"><img src="./logo-sap.png" alt="Logo SAP"></div>                        
+<div class="sponsor-item"><img src="./logo-sap.png" alt="Logo SAP"></div>                                
 <div class="sponsor-item"><img src="./logo-benditta-escuro.png" alt="Logo Benditta Escuro"></div>
                 </div>
             </div>
@@ -744,6 +789,16 @@
                 </div>
             </div>
         </section>
+
+        <!-- NOVA SEÇÃO PERSUASIVA -->
+        <section class="final-cta-section" id="ultima-chamada">
+            <div class="container fade-in-element text-center">
+                <h2>Sua Última Chance de Transformar seu Negócio</h2>
+                <p>Você chegou até aqui porque sabe que seu negócio pode mais. Não deixe essa oportunidade escapar. Alice Salazar vai entregar o caminho para o sucesso digital, mas as vagas são limitadas e estão acabando.</p>
+                <p><strong>Clique no botão abaixo e garanta seu lugar AGORA, antes que seja tarde demais.</strong></p>
+                <a href="#precos" class="cta-button">QUERO MEU INGRESSO</a>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -790,8 +845,9 @@
             const elements = document.querySelectorAll('.fade-in-element');
             elements.forEach(el => observer.observe(el));
         })();
-
     </script>
 
 </body>
 </html>
+
+
