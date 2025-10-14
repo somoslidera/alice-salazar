@@ -96,28 +96,29 @@
             box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
         }
 
+        .secondary-cta {
+            display: block;
+            text-align: left;
+            margin-top: 15px;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .secondary-cta:hover {
+            color: var(--light-text);
+        }
+
         @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
-            }
-            100% {
-                box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-            }
+            0% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(37, 211, 102, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
         }
         
         @keyframes pulse-blue-glow {
-            0% {
-                box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(0, 123, 255, 0.8);
-            }
-            100% {
-                box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
-            }
+            0% { box-shadow: 0 0 15px rgba(0, 123, 255, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(0, 123, 255, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(0, 123, 255, 0.4); }
         }
 
         @keyframes pulse-red-glow {
@@ -213,7 +214,7 @@
         }
 
         .hero-card-mobile {
-            display: none; /* Escondido por padrão */
+            display: none;
         }
         
         @keyframes fadeInRight {
@@ -225,6 +226,43 @@
             to { opacity: 1; transform: translateX(0); }
         }
         
+        /* Para Quem é o Evento Section */
+        .target-audience-section {
+            background-color: rgba(0,0,0,0.15);
+        }
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .audience-card {
+            background: linear-gradient(145deg, rgba(160, 32, 240, 0.1), rgba(13, 12, 29, 0.2));
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--accent-purple);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .audience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(160, 32, 240, 0.3);
+        }
+        .audience-card .icon {
+            font-size: 3rem;
+            color: var(--accent-purple);
+            margin-bottom: 20px;
+        }
+        .audience-card h4 {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--light-text);
+        }
+        .audience-card p {
+            font-size: 1rem;
+            color: rgba(240, 240, 248, 0.8);
+        }
+
         /* Palestrante Section */
         .palestrante-grid {
             display: grid;
@@ -236,6 +274,14 @@
         }
         .palestrante-grid.reverse {
             grid-template-columns: 2fr 1fr;
+        }
+        .highlighted-speaker {
+            background: linear-gradient(145deg, rgba(160, 32, 240, 0.05), rgba(13, 12, 29, 0.1));
+            border: 1px solid var(--accent-purple);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 80px;
+            box-shadow: 0 0 25px rgba(160, 32, 240, 0.15);
         }
         .palestrante-grid img {
             width: 100%;
@@ -282,6 +328,21 @@
             flex-direction: column;
             background: linear-gradient(145deg, rgba(0, 123, 255, 0.1), rgba(13, 12, 29, 0.2));
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .popular-badge {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-purple);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(160, 32, 240, 0.5);
         }
         .price-block h3 {
             color: var(--light-text);
@@ -312,18 +373,78 @@
             margin-top: auto;
         }
 
-        /* Urgency Section */
-        .urgency-section {
-            background-color: var(--accent-red);
-            padding: 60px 0;
+        /* Countdown Timer Section */
+        #countdown-section {
+            background: var(--accent-red);
+            padding: 50px 0;
         }
-        .urgency-section h2 {
-            font-size: 4.5rem;
+        #countdown-section h2 {
             color: var(--light-text);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+        .countdown-timer div {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 100px;
+        }
+        .countdown-timer span {
+            display: block;
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+        }
+        .countdown-timer .label {
+            font-size: 1rem;
             text-transform: uppercase;
-            margin: 0;
-            text-shadow: 3px 3px 15px rgba(0,0,0,0.3);
-            font-weight: 900;
+        }
+
+        /* Video Placeholder Section */
+        .video-section {
+            padding-bottom: 80px;
+        }
+        .video-placeholder {
+            position: relative;
+            max-width: 800px;
+            margin: 30px auto 0;
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--accent-purple);
+            box-shadow: 0 10px 30px rgba(160, 32, 240, 0.3);
+        }
+        .video-placeholder img {
+            width: 100%;
+            display: block;
+        }
+        .video-placeholder .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: white;
+            background-color: rgba(0,0,0,0.5);
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: transform 0.3s, background-color 0.3s;
+            padding-left: 10px;
+        }
+        .video-placeholder:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: rgba(160, 32, 240, 0.8);
         }
 
         /* Sponsors Section */
@@ -379,15 +500,9 @@
         }
 
         @keyframes pulse-blue-border {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
         }
 
         /* FAQ */
@@ -522,10 +637,12 @@
 
         /* Responsive */
         @media (max-width: 992px) {
+            .audience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
             .price-grid {
                 grid-template-columns: 1fr;
             }
-             /* HERO MOBILE */
             .hero-layout {
                 flex-direction: column;
                 text-align: center;
@@ -555,6 +672,9 @@
         }
 
         @media (max-width: 768px) {
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
             .container {
                 padding: 0 25px;
             }
@@ -569,8 +689,13 @@
                 font-size: 2.8rem;
             }
             
-            .urgency-section h2, .final-cta-section h2 { 
-                font-size: 2.8rem; 
+            #countdown-section h2 { font-size: 1.8rem; }
+            .countdown-timer span { font-size: 2rem; }
+            .countdown-timer div { padding: 15px; min-width: 70px; }
+
+
+            .final-cta-section h2 {  
+                font-size: 2.8rem;  
             }
             .palestrante-grid, .palestrante-grid.reverse {
                 grid-template-columns: 1fr;
@@ -591,6 +716,7 @@
     </style>
 
     <script>
+    // <!-- ATENÇÃO: Verifique se este ID do Pixel do Facebook está correto. -->
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -610,7 +736,7 @@
 
     <header class="header">
         <div class="container">
-            <img src="./lidera-logo-branco.png" alt="Lidera Logo" class="logo-img">
+            <img src="./lidera-logo-branco.png" onerror="this.src='https://placehold.co/200x100/0d0c1d/f0f0f8?text=Lidera'" alt="Lidera Logo" class="logo-img">
         </div>
     </header>
 
@@ -630,13 +756,14 @@
 
                     <!-- Card para Mobile -->
                     <div class="hero-card-mobile">
-                        <img src="herosection-alice.png" alt="Card Oficial do Evento Lidera com Alice Salazar">
+                        <img src="herosection-alice.png" onerror="this.src='https://placehold.co/500x500/a020f0/ffffff?text=Lidera+com+Alice+Salazar'" alt="Card Oficial do Evento Lidera com Alice Salazar">
                     </div>
                     
                     <a href="#precos" class="cta-button">GARANTIR MEU INGRESSO</a>
+                    <a href="#para-quem" class="secondary-cta">Este evento é para mim? Descubra agora ↓</a>
                 </div>
                 <div class="hero-image-wrapper hero-image-desktop">
-                    <img src="./as_save-the-date.png" alt="Foto de Alice Salazar para o evento Lidera">
+                    <img src="./as_save-the-date.png" onerror="this.src='https://placehold.co/500x600/0d0c1d/ffffff?text=Alice+Salazar'" alt="Foto de Alice Salazar para o evento Lidera">
                 </div>
             </div>
         </section>
@@ -648,12 +775,41 @@
             </div>
         </section>
 
+        <section class="target-audience-section" id="para-quem">
+            <div class="container fade-in-element">
+                <h2>PARA QUEM É ESTE EVENTO?</h2>
+                <p>Se você se identifica com um destes perfis, esta noite será um divisor de águas na sua jornada.</p>
+                <div class="audience-grid">
+                    <div class="audience-card">
+                        <div class="icon">🛍️</div>
+                        <h4>EMPREENDEDORES E DONOS DE NEGÓCIOS</h4>
+                        <p>Aprenda a usar a internet para sair da guerra de preços, atrair clientes qualificados e transformar sua marca em uma referência na sua cidade.</p>
+                    </div>
+                    <div class="audience-card">
+                        <div class="icon">💼</div>
+                        <h4>PROFISSIONAIS LIBERAIS E AUTÔNOMOS</h4>
+                        <p>Descubra como construir uma autoridade online que te diferencie da concorrência e te permita lotar sua agenda de clientes que valorizam seu trabalho.</p>
+                    </div>
+                    <div class="audience-card">
+                        <div class="icon">📱</div>
+                        <h4>CRIADORES DE CONTEÚDO E INFLUENCERS</h4>
+                        <p>Transforme seus seguidores em uma comunidade engajada e aprenda estratégias para monetizar sua influência de forma sólida e escalável.</p>
+                    </div>
+                    <div class="audience-card">
+                        <div class="icon">🚀</div>
+                        <h4>QUEM SONHA EM EMPREENDER</h4>
+                        <p>Receba o mapa e a inspiração para tirar sua ideia do papel, evitando os erros mais comuns e começando seu negócio digital da forma certa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="content-section" id="palestrantes">
             <div class="container fade-in-element">
                 <h2>Conheça Nossas Palestrantes</h2>
                 
                 <div class="palestrante-grid">
-                    <img src="./lidera_quem-e-alice-salazar.jpg" alt="Foto profissional de Alice Salazar">
+                    <img src="./lidera_quem-e-alice-salazar.jpg" onerror="this.src='https://placehold.co/400x400/007bff/ffffff?text=Alice+Salazar'" alt="Foto profissional de Alice Salazar">
                     <div>
                         <h3>Alice Salazar</h3>
                         <ul class="icon-list">
@@ -665,22 +821,22 @@
                     </div>
                 </div>
 
-                <div class="palestrante-grid reverse" style="margin-top: 80px;">
+                <div class="palestrante-grid reverse highlighted-speaker">
                     <div>
                         <h3>Denise Milk</h3>
                         <h4>Você é o Projeto Mais Lucrativo do Mundo</h4>
                         <p style="text-align: left;">Denise Milk é psicóloga e palestrante, com mais de 15 anos de experiência desenvolvendo líderes, pessoas e empresas com um olhar profundo, humano e estratégico. Sua abordagem parte de uma convicção simples, mas poderosa: a primeira liderança bem-sucedida é a da própria vida.</p>
                     </div>
-                    <img src="./foto-denise-milk.jpeg" alt="Foto profissional de Denise Milk" class="secondary-palestrante-img">
+                    <img src="./foto-denise-milk.jpeg" onerror="this.src='https://placehold.co/300x300/a020f0/ffffff?text=Denise+Milk'" alt="Foto profissional de Denise Milk" class="secondary-palestrante-img">
                 </div>
             </div>
         </section>
-
+        
         <section class="content-section" id="aprendizado">
             <div class="container fade-in-element">
                 <h2>O que Você Vai Aprender</h2>
                 <p>Nesta noite de imersão, você terá acesso a um conteúdo prático para aplicar no dia seguinte:</p>
-                <ul class="icon-list">
+                <ul class="icon-list" style="max-width: 800px; margin: 30px auto 0; text-align:left;">
                     <li><span class="icon">✅</span><div><strong>Estratégias Digitais Vencedoras:</strong> Como usar as redes sociais para construir uma marca forte e atrair clientes, mesmo com baixo orçamento.</div></li>
                     <li><span class="icon">✅</span><div><strong>Dicas Práticas de Redes Sociais:</strong> O que postar, como se comunicar e como transformar seguidores em clientes fiéis.</div></li>
                     <li><span class="icon">✅</span><div><strong>A Jornada da Superação:</strong> A história real de como superar os desafios iniciais para construir um negócio sólido.</div></li>
@@ -698,27 +854,53 @@
                     <h3>APOIADOR MASTER</h3>
                     <div class="sponsors-grid">
                         <div class="sponsor-item pulse-blue-border" style="width: 500px; height: 250px;">
-                            <img src="./Uniliv.png" alt="Logo UniLiv">
+                            <img src="./Uniliv.png" onerror="this.src='https://placehold.co/400x200/ffffff/000000?text=Logo+UniLiv'" alt="Logo UniLiv">
                         </div>
                     </div>
                 </div>
                 <h3>Patrocínio</h3>
                 <div class="sponsors-grid">
-                    <div class="sponsor-item"><img src="./logo-connect.jpeg" alt="Logo Connect"></div>
-                    <div class="sponsor-item"><img src="./logo-cst.PNG" alt="Logo CST"></div>
-                    <div class="sponsor-item"><img src="./logo-savale.png" alt="Logo Savale"></div>
-                    <div class="sponsor-item"><img src="./logo-sicredi.png" alt="Logo Sicredi"></div>
-<div class="sponsor-item"><img src="./logo-sap.png" alt="Logo SAP"></div>                                
-<div class="sponsor-item"><img src="./logo-benditta-escuro.png" alt="Logo Benditta Escuro"></div>
+                    <div class="sponsor-item"><img src="./logo-connect.jpeg" onerror="this.src='https://placehold.co/180x100/ffffff/000000?text=Logo+Connect'" alt="Logo Connect"></div>
+                    <div class="sponsor-item"><img src="./logo-cst.PNG" onerror="this.src='https://placehold.co/180x100/ffffff/000000?text=Logo+CST'" alt="Logo CST"></div>
+                    <div class="sponsor-item"><img src="./logo-savale.png" onerror="this.src='https://placehold.co/180x100/ffffff/000000?text=Logo+Savale'" alt="Logo Savale"></div>
+                    <div class="sponsor-item"><img src="./logo-sicredi.png" onerror="this.src='https://placehold.co/180x100/ffffff/000000?text=Logo+Sicredi'" alt="Logo Sicredi"></div>
+                    <div class="sponsor-item"><img src="./logo-sap.png" onerror="this.src='https://placehold.co/180x100/ffffff/000000?text=Logo+SAP'" alt="Logo SAP"></div>                
+                    <div class="sponsor-item"><img src="./logo-benditta-escuro.png" onerror="this.src='https://placehold.co/180x100/ffffff/000000?text=Logo+Benditta'" alt="Logo Benditta Escuro"></div>
                 </div>
             </div>
         </section>
 
-        <section class="urgency-section">
+        <section id="countdown-section">
             <div class="container fade-in-element">
-                <h2 class="text-center">ANTECIPE-SE</h2>
+                <h2>A oportunidade de transformar seu negócio está acabando!</h2>
+                <div class="countdown-timer" id="countdown">
+                    <div><span id="days">00</span><span class="label">Dias</span></div>
+                    <div><span id="hours">00</span><span class="label">Horas</span></div>
+                    <div><span id="minutes">00</span><span class="label">Minutos</span></div>
+                    <div><span id="seconds">00</span><span class="label">Segundos</span></div>
+                </div>
             </div>
         </section>
+
+       <section class="video-section" id="recado-alice">
+    <div class="container fade-in-element">
+        <h2>Um Recado Importante da Alice</h2>
+        <p>Assista ao vídeo e entenda por que você não pode perder esta oportunidade.</p>
+        
+        <!-- O placeholder foi substituído pelo vídeo abaixo -->
+        <video 
+            src="./recado-alice.mp4" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            style="width: 100%; max-width: 800px; border-radius: 10px; margin: 30px auto 0; display: block; border: 2px solid #A020F0; box-shadow: 0 10px 30px rgba(160, 32, 240, 0.3);">
+            Seu navegador não suporta o vídeo.
+        </video>
+
+    </div>
+</section>
+
 
         <section class="price-section" id="precos">
             <div class="container fade-in-element">
@@ -741,6 +923,7 @@
                     </div>
 
                     <div class="price-block">
+                        <div class="popular-badge">MAIS POPULAR</div>
                         <h3>Ingresso VIP</h3>
                         <div class="price">R$ 149<span class="cents">,00</span></div>
                         <p>ou 6x de R$ 27,95</p>
@@ -754,8 +937,8 @@
                     </div>
                 </div>
 
-                <div class="final-cta text-center">
-                    <p class="scarcity-text">Atenção: Vagas limitadas. Não deixe para depois.</p>
+                <div class="final-cta text-center" style="margin-top: 40px;">
+                    <p class="scarcity-text" style="font-weight: 700; color: var(--accent-red); font-size: 1.3rem;">Atenção: Vagas limitadas. Não deixe para depois.</p>
                 </div>
             </div>
         </section>
@@ -767,6 +950,12 @@
                     <div class="faq-question">Este evento é só para mulheres ou para quem trabalha com beleza?</div>
                     <div class="faq-answer">
                         <p>Não. Este evento é sobre negócios, estratégia e crescimento digital. As estratégias de marketing, gestão e vendas que ela vai ensinar são aplicáveis a qualquer setor, seja você homem ou mulher, dono de uma oficina, loja, consultório ou agência.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Receberei certificado de participação?</div>
+                    <div class="faq-answer">
+                        <p>Sim, todos os participantes receberão um certificado digital de participação.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -784,10 +973,9 @@
             </div>
         </section>
 
-        <!-- NOVA SEÇÃO PERSUASIVA -->
         <section class="final-cta-section" id="ultima-chamada">
             <div class="container fade-in-element text-center">
-                <h2>Sua Última Chance de Transformar seu Negócio</h2>
+                <h2>Sua Última Chance de Transformar seu Negócio em 2025</h2>
                 <p>Você chegou até aqui porque sabe que seu negócio pode mais. Não deixe essa oportunidade escapar. Alice Salazar vai entregar o caminho para o sucesso digital, mas as vagas são limitadas e estão acabando.</p>
                 <p><strong>Clique no botão abaixo e garanta seu lugar AGORA, antes que seja tarde demais.</strong></p>
                 <a href="#precos" class="cta-button">QUERO MEU INGRESSO</a>
@@ -797,10 +985,11 @@
 
     <footer class="footer">
         <div class="container">
-            <img src="./lidera-logo-branco.png" alt="Lidera Soluções de Negócio Logo" class="footer-logo-img">
+            <img src="./lidera-logo-branco.png" onerror="this.src='https://placehold.co/200x100/0d0c1d/f0f0f8?text=Lidera'" alt="Lidera Soluções de Negócio Logo" class="footer-logo-img">
             <div class="social-links">
                 <a href="https://instagram.com/somos.lidera" target="_blank">@somos.lidera</a>
                 <a href="https://instagram.com/alicesalazar" target="_blank">@alicesalazar</a>
+                <a href="https://instagram.com/denisemilk" target="_blank">@denisemilk</a>
             </div>
             <p>© 2025 Lidera Soluções de Negócio. Todos os direitos reservados.</p>
         </div>
@@ -811,7 +1000,6 @@
     </a>
 
     <script>
-        // FAQ Accordion
         (function () {
             const faqItems = document.querySelectorAll('.faq-item');
             faqItems.forEach(item => {
@@ -826,7 +1014,6 @@
             });
         })();
 
-        // Scroll Animation
         (function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -839,9 +1026,36 @@
             const elements = document.querySelectorAll('.fade-in-element');
             elements.forEach(el => observer.observe(el));
         })();
+
+        (function() {
+            // ATENÇÃO: A data do evento está configurada para 22/10/2025 às 19h30.
+            const eventDate = new Date(2025, 9, 22, 19, 30, 0).getTime();
+            const countdownElement = document.getElementById('countdown');
+            if (!countdownElement) return;
+
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    countdownElement.innerHTML = "<h2 style='font-size: 1.5rem;'>EVENTO ENCERRADO!</h2>";
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        })();
     </script>
 
 </body>
 </html>
-
 
