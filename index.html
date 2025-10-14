@@ -37,7 +37,7 @@
         body {
             font-family: var(--font-body);
             color: var(--light-text);
-            background: linear-gradient(to bottom, var(--primary-dark), #4a148c);
+            background: linear-gradient(to bottom, #0d0c1d, #000033);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -682,12 +682,13 @@
         /* Estilos para o Vídeo Responsivo */
         .video-container {
             position: relative;
+            cursor: pointer;
             width: 100%;
-            max-width: 800px;
+            max-width: 450px; /* Largura máxima para vídeo vertical */
             margin: 30px auto 0;
             border-radius: 10px;
-            overflow: hidden; /* Garante que o vídeo respeite as bordas arredondadas */
-            aspect-ratio: 16 / 9; /* Mágica da responsividade: mantém a proporção 16:9 */
+            overflow: hidden; 
+            aspect-ratio: 9 / 16; /* Proporção para vídeo vertical */
             border: 2px solid #A020F0;
             box-shadow: 0 10px 30px rgba(160, 32, 240, 0.3);
         }
@@ -695,7 +696,7 @@
         .video-container video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Faz o vídeo cobrir todo o espaço sem distorcer */
+            object-fit: cover; 
         }
 
         .sound-button {
@@ -706,7 +707,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50%; /* Botão redondo */
+            border-radius: 50%;
             width: 45px;
             height: 45px;
             cursor: pointer;
@@ -720,6 +721,29 @@
             background-color: rgba(160, 32, 240, 0.8);
             transform: scale(1.1);
         }
+
+        .sound-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background-color: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.5s;
+            z-index: 5;
+        }
+
+        .sound-overlay.hidden {
+            opacity: 0;
+        }
+
     </style>
 
     <script>
@@ -898,6 +922,7 @@
                     <video id="aliceVideo" src="./recado-alice.MP4" autoplay muted loop playsinline>
                         Seu navegador não suporta o vídeo.
                     </video>
+                    <div id="soundOverlay" class="sound-overlay">CLIQUE PARA ATIVAR O SOM</div>
                     <button id="soundButton" class="sound-button">
                         <!-- Ícone de Som Desativado (SVG) -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
@@ -956,12 +981,6 @@
                     <div class="faq-question">Este evento é só para mulheres ou para quem trabalha com beleza?</div>
                     <div class="faq-answer">
                         <p>Não. Este evento é sobre negócios, estratégia e crescimento digital. As estratégias de marketing, gestão e vendas que ela vai ensinar são aplicáveis a qualquer setor, seja você homem ou mulher, dono de uma oficina, loja, consultório ou agência.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Receberei certificado de participação?</div>
-                    <div class="faq-answer">
-                        <p>Sim, todos os participantes receberão um certificado digital de participação.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1063,24 +1082,28 @@
 
         // Controle do Botão de Som do Vídeo
         (function() {
+            const videoContainer = document.querySelector('.video-container');
             const video = document.getElementById('aliceVideo');
             const soundButton = document.getElementById('soundButton');
+            const soundOverlay = document.getElementById('soundOverlay');
             
-            // Evita erro se os elementos não existirem
-            if (!video || !soundButton) return;
+            if (!videoContainer || !video || !soundButton || !soundOverlay) return;
 
             const iconMuted = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>`;
             const iconUnmuted = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
 
-            soundButton.addEventListener('click', () => {
+            const toggleSound = () => {
                 if (video.muted) {
                     video.muted = false;
                     soundButton.innerHTML = iconUnmuted;
+                    soundOverlay.classList.add('hidden');
                 } else {
                     video.muted = true;
                     soundButton.innerHTML = iconMuted;
                 }
-            });
+            };
+            
+            videoContainer.addEventListener('click', toggleSound);
         })();
     </script>
 
