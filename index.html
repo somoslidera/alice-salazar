@@ -952,21 +952,45 @@
                         </ul>
                         <a href="https://pay.kiwify.com.br/NBLin9i" target="_blank" class="cta-button">Comprar Standard</a>
                     </div>
-<!-- Ingresso VIP Removido desta seção -->
-            // <!--        <div class="price-block">
-                        <div class="popular-badge">MAIS POPULAR</div>
-                        <h3>Ingresso VIP</h3>
-                        <div class="price">R$ 149<span class="cents">,00</span></div>
-                        <p>ou 6x de R$ 27,95</p>
-                        <ul>
-                            <li>✓ Todos os benefícios do Ingresso Standard</li>
-                            <li><strong>+ Lugar Exclusivo próximo ao palco</strong></li>
-                            <li><strong>+ Não precisa chegar mais cedo para garantir lugar</strong></li>
-                            <li><strong>+ Acesso prioritário aos palestrantes após o evento</strong></li>
-                        </ul>
-                        <a href="https://pay.kiwify.com.br/AzNitmD" target="_blank" class="cta-button" style="background-color: var(--accent-vivid-blue); animation: pulse-blue-glow 2s infinite ease-in-out;">Comprar VIP</a>
-                    </div>
-                </div> -->
+<div class="price-block sold-out">
+    <div class="popular-badge">MAIS POPULAR</div>
+    <h3>Ingresso VIP</h3>
+    <div class="sold-out-badge">ESGOTADO</div>
+    <p>As vagas para o Ingresso VIP se esgotaram.</p>
+    <ul>
+        <li>✓ Todos os benefícios do Ingresso Standard</li>
+        <li><strong>+ Lugar Exclusivo próximo ao palco</strong></li>
+        <li><strong>+ Não precisa chegar mais cedo para garantir lugar</strong></li>
+        <li><strong>+ Acesso prioritário aos palestrantes após o evento</strong></li>
+    </ul>
+    <a href="#" class="cta-button disabled" disabled>ESGOTADO</a>
+</div>
+
+<style>
+    .price-block.sold-out {
+        opacity: 0.6;
+        position: relative;
+        overflow: hidden;
+    }
+    .sold-out-badge {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-15deg);
+        background-color: red;
+        color: white;
+        padding: 10px 30px;
+        font-size: 2em;
+        font-weight: bold;
+        border-radius: 5px;
+        z-index: 10;
+    }
+    .cta-button.disabled {
+        background-color: grey !important;
+        cursor: not-allowed;
+        animation: none !important;
+    }
+</style>
 
                 <div class="final-cta text-center" style="margin-top: 40px;">
                     <p class="scarcity-text" style="font-weight: 700; color: var(--accent-red); font-size: 1.3rem;">Atenção: Vagas limitadas. Não deixe para depois.</p>
